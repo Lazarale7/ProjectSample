@@ -1,0 +1,4 @@
+/ProjectSample/build/
+/ProjectSample/dist/
+/ProjectSample/logs/*.log
+/ProjectSample/src/main/resources/dat/
