@@ -26,8 +26,8 @@ public class Min {
         day = (min / 60)  / 24;
         // year = day/365.25 високостный вариант
         year = day / 365;
-        System.out.println("This number of seconds is equal to " + day + " days");
-        System.out.println("This number of seconds is equal to " + year + " years");
+        System.out.println("This number of minutes is equal to " + day + " days");
+        System.out.println("This number of minutes is equal to " + year + " years");
     }
 
 }
