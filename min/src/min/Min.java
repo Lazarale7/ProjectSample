@@ -18,12 +18,12 @@ public class Min {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.print("Please input number of seconds: ");
+        System.out.print("Please input number of minutes: ");
         Scanner scan = new Scanner(System.in);
-        int sec = scan.nextInt();
+        int min = scan.nextInt();
         double year;
         double day;
-        day = ((sec / 60) / 60) / 24;
+        day = (min / 60)  / 24;
         // year = day/365.25 високостный вариант
         year = day / 365;
         System.out.println("This number of seconds is equal to " + day + " days");
