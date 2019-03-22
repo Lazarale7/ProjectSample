@@ -36,6 +36,7 @@ public class Dogapp {
         System.out.println(var2);
         var2 = 12;
         dog1.age = 3;
+        System.out.println("3rd print-out:");
         System.out.println(dog1.age);
         System.out.println(dog2.age);
         System.out.println(var1);
