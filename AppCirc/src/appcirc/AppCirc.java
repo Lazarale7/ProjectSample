@@ -23,7 +23,7 @@ public class AppCirc {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        /*
+        
         Circle circle1 = new Circle();
         Circle circle2 = new Circle();
         InputStream inputStream = System.in;
@@ -60,7 +60,7 @@ public class AppCirc {
         shape1.circle.calculateArea();
         shape1.rectangle.calculateArea();
         shape1.rectangle.calculatePerimeter();
-         */
+         
         Point userPoint = new Point();
         userPoint.x = 55;
         userPoint.y = 4;
@@ -78,13 +78,6 @@ public class AppCirc {
         userTriangle.p1 = point1;
         userTriangle.p2 = point2;
         userTriangle.p3 = point3;
-        //userTriangle.p2.determineQuad();
-//        userTriangle.p1.x = 1;
-//        userTriangle.p1.y = 1;
-//        userTriangle.p2.x = 2;
-//        userTriangle.p2.y = 1;
-//        userTriangle.p3.x = 1;
-//        userTriangle.p3.y = 3;
         userTriangle.determineType();
 
     }
