@@ -17,6 +17,7 @@ public class ArrayApp {
     public static void main(String[] args) {
         // TODO code application logic here
         Array arrayUser = new Array();
+        
         //arrayUser.arrayFill();
         arrayUser.arrayPrint();
         arrayUser.average();

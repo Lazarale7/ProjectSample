@@ -11,9 +11,9 @@ package arrayapp;
  */
 public class Array {
 
-    int myArray1[];
+    int myArray1[] = {4, 6, 7, 8, 2, 3, 4, 76, 43, 71, 33, -1, 65, 3};
+     
     
-// = {4, 6, 7, 8, 2, 3, 4, 76, 43, 71, 33, -1, 65, 3}
     public void arrayFill() {
         for (int i = 0; i < myArray1.length; i++) {
             myArray1[i] = i * 2 + 3;
