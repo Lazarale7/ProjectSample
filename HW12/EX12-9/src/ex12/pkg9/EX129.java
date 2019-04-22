@@ -46,11 +46,17 @@ public class EX129 {
         System.out.println(intersect(myArrayList, myArrayList1));
     }
 
-    public static ArrayList intersect(ArrayList myArr, ArrayList myArr1) {
+    public static ArrayList<Integer> intersect(ArrayList<Integer> myArr, ArrayList<Integer> myArr1) {
+        //Integer i, j;
         ArrayList<Integer> tempArray = new ArrayList<Integer>();
-        for ((Integer) myInt : myArr)
-        {
-            
+        for (Integer i : myArr) {
+            for (Integer j : myArr1) {
+                if (i.equals(j)) {
+                    tempArray.add(j);
+
+                }
+            }
+
         }
         return tempArray;
     }
