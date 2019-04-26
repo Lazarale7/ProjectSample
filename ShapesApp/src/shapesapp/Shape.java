@@ -9,7 +9,7 @@ package shapesapp;
  *
  * @author Alex
  */
-public abstract class Shape extends Point {
+public abstract class Shape {
 
     protected Color color;
 

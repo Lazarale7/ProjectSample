@@ -29,7 +29,6 @@ public class Rectangle extends Polygon {
         //LowRight
         System.out.println("Right4");
         this.vertices[3] = new Point(this.vertices[0].getX(), this.vertices[1].getY());
-
     }
 
     @Override

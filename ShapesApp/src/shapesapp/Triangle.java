@@ -14,6 +14,7 @@ import java.util.Arrays;
 public class Triangle extends Polygon {
 
     public Triangle(Point cornerOne, Point cornerTwo, Point cornerThree) {
+        super();
         this.vertices[0] = cornerOne;
         this.vertices[1] = cornerTwo;
         this.vertices[2] = cornerThree;
