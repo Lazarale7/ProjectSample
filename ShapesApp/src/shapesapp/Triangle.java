@@ -14,10 +14,9 @@ import java.util.Arrays;
 public class Triangle extends Polygon {
 
     public Triangle(Point cornerOne, Point cornerTwo, Point cornerThree) {
-        Point[] vertices = new Point[3];
-        vertices[0] = cornerOne;
-        vertices[1] = cornerTwo;
-        vertices[2] = cornerThree;
+        this.vertices[0] = cornerOne;
+        this.vertices[1] = cornerTwo;
+        this.vertices[2] = cornerThree;
 
     }
 
@@ -100,8 +99,9 @@ public class Triangle extends Polygon {
         }
     }
 
-    public String isString() {
-        return "Vertices are:" + Arrays.toString(this.vertices);
+    @Override
+    public String toString() {
+        return "Vertices are:" + this.vertices[0] + this.vertices[1] + this.vertices[2];
     }
 
     public double calculateLength(Point point1, Point point2) {

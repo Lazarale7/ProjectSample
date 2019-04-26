@@ -20,11 +20,11 @@ public class ShapesApp {
         Point centerCircle = new Point(3.0, 4.0);
         Circle myCircle = new Circle(centerCircle, 7);
         Point topRightCornerRect = new Point(1.0, 1.5);
-     //   Rectangle myRectangle = new Rectangle(centerCircle, 5, 7);
+        Rectangle myRectangle = new Rectangle(centerCircle, 5, 7);
 //
         Point newPoint = new Point(-6.0, 4.5);
         Triangle myTriangle = new Triangle(centerCircle, topRightCornerRect, newPoint);
-        //     Square mySquare = new Square(newPoint, 9);
+        Square mySquare = new Square(newPoint, 9);
         Color userColor = new Color(5, 5, 5);
         System.out.println("Test of Circle");
         System.out.println("Current data:" + myCircle.toString());
@@ -35,8 +35,11 @@ public class ShapesApp {
         myCircle.move(4, 1);
         System.out.println("After:" + myCircle.toString());
         System.out.println("Test of Triangle");
+
         System.out.println("Current data:" + myTriangle.toString());
-        
+        System.out.println(newPoint.toString());
+        System.out.println(centerCircle.toString());
+        System.out.println(topRightCornerRect.toString());
         System.out.println("Perimeter = " + myTriangle.getPerimeter());
         System.out.println("Surface = " + myTriangle.getSurface());
     }
