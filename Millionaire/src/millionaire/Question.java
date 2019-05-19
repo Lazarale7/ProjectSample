@@ -7,8 +7,7 @@ package millionaire;
 
 /**
  *
- * @author Alex
- * Класс описывает вопрос и его поля
+ * @author Alex Класс описывает вопрос и его поля
  */
 public class Question {
 
@@ -94,6 +93,11 @@ public class Question {
 
     public void setReward(int reward) {
         this.reward = reward;
+    }
+
+    @Override
+    public String toString() {
+        return "ToString of Question{" + "question=" + question + ", level=" + level + ", reward=" + reward + '}';
     }
 
 }

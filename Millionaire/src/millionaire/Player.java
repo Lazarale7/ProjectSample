@@ -7,14 +7,14 @@ package millionaire;
 
 /**
  *
- * @author Alex
- * Класс описывает игрока и его текущее состояние.
- * Состояние игрока - Имя игрока и текущий счет
+ * @author Alex Класс описывает игрока и его текущее состояние. Состояние игрока
+ * - Имя игрока и текущий счет
  */
 public class Player {
 
     private static String name;
     private static int score;
+    private static int currentLevel;
 
     public static String getName() {
         return name;
@@ -30,6 +30,14 @@ public class Player {
 
     public static void setScore(int score) {
         Player.score = score;
+    }
+
+    public static int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public static void setCurrentLevel(int currentLevel) {
+        Player.currentLevel = currentLevel;
     }
 
 }
