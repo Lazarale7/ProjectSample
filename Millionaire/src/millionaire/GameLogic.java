@@ -23,7 +23,8 @@ public class GameLogic {
      *
      * @throws IOException Метод запускает игру
      */
-    public void playGame() throws IOException {
+    public int playGame() throws IOException {
+        String continueString = "";
         Player.setScore(0);
         Player.setCurrentLevel(1);
         int a = 1;
@@ -35,8 +36,17 @@ public class GameLogic {
             Player.setScore(Player.getScore() + a);
         }
 
-        System.out.println("Спасибо за игру!");
-        System.out.println(Player.getName() + ", Вы заработали : " + Player.getScore());
+        System.out.println("Thank you for playing!");
+        System.out.println(Player.getName() + ", You have earned : " + Player.getScore());
+        System.out.println("You want to play one more time?");
+        System.out.println("If yes, type Yes, or Y?");
+        BufferedReader reader1 = new BufferedReader(new InputStreamReader(System.in));
+        continueString = reader1.readLine();
+        if (continueString.equalsIgnoreCase("yes") || continueString.equalsIgnoreCase("y")) {
+            return 1;
+        } else {
+            return 0;
+        }
 
     }
 
@@ -51,41 +61,67 @@ public class GameLogic {
      */
     public static int playQuestion(Question question) throws IOException {
         String helper;
-        System.out.println("Ответьте, пожалуйста, на следующий вопрос (Уровень " + Player.getCurrentLevel() + ")!");
-        System.out.println(question.getQuestion());
-        System.out.println("Варианты ответа: ");
-        System.out.println(question.getAnswerA());
-        System.out.println(question.getAnswerB());
-        System.out.println(question.getAnswerC());
-        System.out.println(question.getAnswerD());
-        System.out.println("какой ваш вариант?  ***введите цифру от 1 до 4***");
-        System.out.println("Подсказки: a - зал, p - звонок, f - 50/50");
+        System.out.println("Currently you have earned " + Player.getScore() + " totally!");
+        System.out.println("Please answer the following question. (Level " + Player.getCurrentLevel() + ")!");
+        System.out.println("In case of correct answer you will receive: " + question.getReward());
+        System.out.println("\033[31m" + question.getQuestion());
+        System.out.println("You can choose from: ");
+        System.out.println("\033[32m" + question.getAnswerA());
+        System.out.println("\033[34m" + question.getAnswerB());
+        System.out.println("\033[35m" + question.getAnswerC());
+        System.out.println("\033[36m" + question.getAnswerD());
+        System.out.println("What you choose  ***please input digit from 1 to 4***");
+        System.out.println("\033[30mHelpers: a - from audience, p - call to friend, f - 50/50");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         helper = reader.readLine();
         if (helper.equals("a")) {
-            helper = helpToSolve(helper, question);
+            if (Player.isHasAudienceHelper()) {
+                helper = helpToSolve(helper, question);
+                Player.setHasAudienceHelper(false);
+            } else {
+                System.out.println("You have no such option for help available!");
+                System.out.println("Input correctly");
+                helper = reader.readLine();
+            }
         }
+
         if (helper.equals("p")) {
-            helper = helpToSolve(helper, question);
+            if (Player.isHasPhoneHelper()) {
+                helper = helpToSolve(helper, question);
+                Player.setHasPhoneHelper(false);
+            } else {
+                System.out.println("You have no such option for help available!");
+                System.out.println("Input correctly");
+                helper = reader.readLine();
+            }
         }
         if (helper.equals("f")) {
-            helper = helpToSolve(helper, question);
+            if (Player.isHas50Helper()) {
+                helper = helpToSolve(helper, question);
+                Player.setHas50Helper(false);
+            } else {
+                System.out.println("You have no such option for help available!");
+                System.out.println("Input correctly");
+                helper = reader.readLine();
+            }
         }
         if (Integer.parseInt(helper) == question.getCorrectAnswer()) {
-            System.out.println("Вы ответили правильно! Поздравляю!");
+            System.out.println("Your answer is correct!");
+            System.out.println("You have earned - " + question.getReward());
             Player.setCurrentLevel(Player.getCurrentLevel() + 1);
             return question.getReward();
         } else {
-            System.out.println("К сожалению ответ неверный! Уверен, Вам повезет в следующий раз!");
-            System.out.println("Вы дошли до уровня:" + Player.getCurrentLevel());
+            System.out.println("Unfortunatelly you gave a wrong answer! Try next time!");
+            System.out.println("You have reached level:" + Player.getCurrentLevel());
             return 0;
         }
 
     }
 
     /**
+     * Метод подсказок
      *
-     * @param inputHelper Метод подсказок
+     * @param inputHelper
      * @param inputQuestion
      * @return
      * @throws java.io.IOException
@@ -113,8 +149,8 @@ public class GameLogic {
             }
             iSum = i1 + i2 + i3 + i4;
             DecimalFormat df = new DecimalFormat("#.##");
-            System.out.println("The audience thinks as below:");
-            System.out.println("Answer A: " + inputQuestion.getAnswerA() + "   " + df.format((i1 / iSum) * 100) + "%");
+            System.out.println("\033[43mThe audience thinks as below:");
+            System.out.println("\033[0mAnswer A: " + inputQuestion.getAnswerA() + "   " + df.format((i1 / iSum) * 100) + "%");
             System.out.println("Answer B: " + inputQuestion.getAnswerB() + "   " + df.format((i2 / iSum) * 100) + "%");
             System.out.println("Answer C: " + inputQuestion.getAnswerC() + "   " + df.format((i3 / iSum) * 100) + "%");
             System.out.println("Answer D: " + inputQuestion.getAnswerD() + "   " + df.format((i4 / iSum) * 100) + "%");
@@ -123,18 +159,18 @@ public class GameLogic {
             output = helperReader.readLine();
         }
         if (inputHelper.equals("p")) {
-            System.out.println("Мы позвоним Вашему другу Алексею");
+            System.out.println("We will call your friend, Alexei.");
             if (inputQuestion.getCorrectAnswer() == 1) {
-                System.out.println("Алексей, считает, что правильный ответ:" + inputQuestion.getAnswerA());
+                System.out.println("Alexei, thinks that correct answer is:" + inputQuestion.getAnswerA());
             }
             if (inputQuestion.getCorrectAnswer() == 2) {
-                System.out.println("Алексей, считает, что правильный ответ:" + inputQuestion.getAnswerB());
+                System.out.println("Alexei, thinks that correct answer is:" + inputQuestion.getAnswerB());
             }
             if (inputQuestion.getCorrectAnswer() == 3) {
-                System.out.println("Алексей, считает, что правильный ответ:" + inputQuestion.getAnswerC());
+                System.out.println("Alexei, thinks that correct answer is:" + inputQuestion.getAnswerC());
             }
             if (inputQuestion.getCorrectAnswer() == 4) {
-                System.out.println("Алексей, считает, что правильный ответ:" + inputQuestion.getAnswerD());
+                System.out.println("Alexei, thinks that correct answer is:" + inputQuestion.getAnswerD());
             }
             System.out.println("Please make your choice: ");
             BufferedReader helperReader = new BufferedReader(new InputStreamReader(System.in));
@@ -142,7 +178,7 @@ public class GameLogic {
         }
         if (inputHelper.equals("f")) {
             int rand = inputQuestion.getCorrectAnswer();
-            System.out.println("Уважаемый, компьютер, уберите, 2 неправильных ответа.");
+            System.out.println("Please remove 2 incorrect answers");
             while (rand == inputQuestion.getCorrectAnswer()) {
                 rand = getRandomInt(1, 4);
             }
@@ -163,6 +199,14 @@ public class GameLogic {
         return output;
     }
 
+    /**
+     * Метод возвращает ответ, чей порядковый номер был получен в качестве
+     * параметра
+     *
+     * @param i
+     * @param question
+     * @return
+     */
     public static String getStringAnswer(int i, Question question) {
         switch (i) {
             case 1:
@@ -179,8 +223,9 @@ public class GameLogic {
     }
 
     /**
+     * Метод добавляет все существующие вопросы в список
      *
-     * @param myList Метод добавляет все существующие вопросы в список
+     * @param myList
      */
     public static void addQuestions(ArrayList<Question> myList) {
 
@@ -204,11 +249,11 @@ public class GameLogic {
     }
 
     /**
+     * Метод выбирает случайный вопрос из списка возможных на данном уровне
      *
      * @param list
      * @param level
-     * @return Метод выбирает случайный вопрос из списка возможных на данном
-     * уровне
+     * @return
      */
     public static Question chooseQuestion(ArrayList<Question> list) {
         Question outputQuestion;
@@ -225,11 +270,11 @@ public class GameLogic {
     }
 
     /**
+     * Возвращает случайно целое число в диапазоне от min до max включительно
      *
      * @param min
      * @param max
-     * @return Возвращает случайно целое число в диапазоне от min до max
-     * включительно
+     * @return
      */
     private static int getRandomInt(int min, int max) {
 

@@ -21,15 +21,16 @@ public class Millionaire {
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-
+        int continueInt = 1;
         GameLogic game = new GameLogic();
-        System.out.println("Добро пожаловать в игру!");
-        System.out.println("Вы знаете правила");
-        System.out.println("Введите Ваше имя...");
+        System.out.println("Welcome to the game");
+        System.out.println("You know the rules");
+        System.out.println("please, input your name...");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Player.setName(reader.readLine());
-        game.playGame();
-
+        while (continueInt == 1) {
+            continueInt = game.playGame();
+        }
     }
 
 }

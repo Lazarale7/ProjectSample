@@ -15,6 +15,33 @@ public class Player {
     private static String name;
     private static int score;
     private static int currentLevel;
+    private static boolean hasAudienceHelper = true;
+    private static boolean hasPhoneHelper = true;
+    private static boolean has50Helper = true;
+
+    public static boolean isHasAudienceHelper() {
+        return hasAudienceHelper;
+    }
+
+    public static void setHasAudienceHelper(boolean hasAudienceHelper) {
+        Player.hasAudienceHelper = hasAudienceHelper;
+    }
+
+    public static boolean isHasPhoneHelper() {
+        return hasPhoneHelper;
+    }
+
+    public static void setHasPhoneHelper(boolean hasPhoneHelper) {
+        Player.hasPhoneHelper = hasPhoneHelper;
+    }
+
+    public static boolean isHas50Helper() {
+        return has50Helper;
+    }
+
+    public static void setHas50Helper(boolean has50Helper) {
+        Player.has50Helper = has50Helper;
+    }
 
     public static String getName() {
         return name;

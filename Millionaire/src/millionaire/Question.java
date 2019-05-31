@@ -97,7 +97,7 @@ public class Question {
 
     @Override
     public String toString() {
-        return ("ToString of Question{" + "question=" + question + ", level=" + level + ", reward=" + reward + '}');
+        return ("question=" + question + ", level=" + level + ", reward=" + reward + '}');
     }
 
 }
