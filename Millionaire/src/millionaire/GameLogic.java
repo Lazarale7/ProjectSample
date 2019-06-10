@@ -229,7 +229,7 @@ public class GameLogic {
      */
     public static void addQuestions(ArrayList<Question> myList) {
 
-        Question question1 = new Question("Question1?", "AnswerA", "*AnswerB", "AnswerC", "AnswerD", 2, 1, 500);
+        Question question1 = new Question("In the UK, VAT stands for value-added ...?", "AnswerA", "*AnswerB", "AnswerC", "AnswerD", 2, 1, 500);
         Question question2 = new Question("Question2?", "*AnswerA", "AnswerB", "AnswerC", "AnswerD", 1, 1, 500);
         Question question3 = new Question("Question3?", "AnswerA", "AnswerB", "*AnswerC", "AnswerD", 3, 2, 1000);
         Question question4 = new Question("Question4?", "AnswerA", "AnswerB", "*AnswerC", "AnswerD", 3, 2, 1000);
